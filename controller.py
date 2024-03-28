@@ -16,33 +16,35 @@ right_motor = Servo(21, frame_width=.01-.00000002)
 # This is a simple class that will help us print to the screen.
 # It has nothing to do with the joysticks, just outputting the
 # information.
-class TextPrint:
-    def __init__(self):
-        self.reset()
-        self.font = pygame.font.Font(None, 25)
+# class TextPrint:
+#     def __init__(self):
+#         self.reset()
+#         self.font = pygame.font.Font(None, 25)
 
-    def tprint(self, screen, text):
-        text_bitmap = self.font.render(text, True, (0, 0, 0))
-        screen.blit(text_bitmap, (self.x, self.y))
-        self.y += self.line_height
+#     def tprint(self, screen, text):
+#         text_bitmap = self.font.render(text, True, (0, 0, 0))
+#         screen.blit(text_bitmap, (self.x, self.y))
+#         self.y += self.line_height
 
-    def reset(self):
-        self.x = 10
-        self.y = 10
-        self.line_height = 15
+#     def reset(self):
+#         self.x = 10
+#         self.y = 10
+#         self.line_height = 15
 
-    def indent(self):
-        self.x += 10
+#     def indent(self):
+#         self.x += 10
 
-    def unindent(self):
-        self.x -= 10
+#     def unindent(self):
+#         self.x -= 10
 
 def round(input):
     return int(input * 10)/10
 def mix(x,y):
     # +y is forward, -y is backward, +x is left, -x is right... change if needed
-    rotation = x
-    forward = y
+    mag = math.sqrt(x**2 + y**2)
+    left = y - x
+    right = y + x
+    return tuple(round(right), round(left))
     
     
     
@@ -56,7 +58,7 @@ def main():
     clock = pygame.time.Clock()
 
     # Get ready to print.
-    text_print = TextPrint()
+    #text_print = TextPrint()
 
     # This dict can be left as-is, since pygame will generate a
     # pygame.JOYDEVICEADDED event for every joystick connected
@@ -103,7 +105,9 @@ def main():
         b_sq = joystick.get_button(3)
         b_tr = joystick.get_button(2)
         print(round(y1_axis))
-        left_motor.value = round(y1_axis)
+        motor_vals = mix(x1_axis, y1_axis)
+        right_motor.value = motor_vals[0]
+        left_motor.value = motor_vals[1]
         
         
         
