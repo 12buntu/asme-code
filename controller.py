@@ -1,12 +1,17 @@
 #!/home/blackweldera/venv/bin/python3
 import pygame
+import math
 from gpiozero import Servo, PWMOutputDevice
 import time
 from evdev import InputDevice, categorize, ecodes
 
 pygame.init()
-motor = Servo(21, frame_width=.01-.00000002)
-motor.value = 1
+
+
+left_motor = Servo(21, frame_width=.01-.00000002)
+right_motor = Servo(21, frame_width=.01-.00000002)
+
+
 
 # This is a simple class that will help us print to the screen.
 # It has nothing to do with the joysticks, just outputting the
@@ -34,6 +39,14 @@ class TextPrint:
 
 def round(input):
     return int(input * 10)/10
+def mix(x,y):
+    # +y is forward, -y is backward, +x is left, -x is right... change if needed
+    rotation = x
+    forward = y
+    
+    
+    
+
 def main():
     # Set the width and height of the screen (width, height), and name the window.
     screen = pygame.display.set_mode((500, 700))
@@ -58,17 +71,6 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True  # Flag that we are done so we exit this loop.
-
-            if event.type == pygame.JOYBUTTONDOWN:
-                print("Joystick button pressed.")
-                if event.button == 0:
-                    joystick = joysticks[event.instance_id]
-                    if joystick.rumble(0, 0.7, 500):
-                        print(f"Rumble effect played on joystick {event.instance_id}")
-
-            if event.type == pygame.JOYBUTTONUP:
-                print("Joystick button released.")
-
             # Handle hotplugging
             if event.type == pygame.JOYDEVICEADDED:
                 # This event will be generated when the program starts for every
@@ -76,55 +78,39 @@ def main():
                 joy = pygame.joystick.Joystick(event.device_index)
                 joysticks[joy.get_instance_id()] = joy
                 print(f"Joystick {joy.get_instance_id()} connencted")
-
             if event.type == pygame.JOYDEVICEREMOVED:
                 del joysticks[event.instance_id]
                 print(f"Joystick {event.instance_id} disconnected")
 
-        # Drawing step
-        # First, clear the screen to white. Don't put other drawing commands
-        # above this, or they will be erased with this command.
-        screen.fill((255, 255, 255))
         text_print.reset()
 
         # Get count of joysticks.
         joystick_count = pygame.joystick.get_count()
 
         text_print.tprint(screen, f"Number of joysticks: {joystick_count}")
-        for joystick in joysticks.values():
+        joystick = next(iter(joysticks.values()))
+        #for joystick in joysticks.values():
 ################################### IMPORTANT STUFF ##################################################################            
-            x1_axis = joystick.get_axis(0)
-            y1_axis = joystick.get_axis(1)
-            x2_axis = joystick.get_axis(3)
-            y2_axis = joystick.get_axis(4)
-            r_axis = joystick.get_axis(2) # for r and l axis, -1 is all the way up, 1 is all the way down
-            l_axis = joystick.get_axis(5)
-            
-            b_x = joystick.get_button(0)
-            b_o = joystick.get_button(1)
-            b_sq = joystick.get_button(3)
-            b_tr = joystick.get_button(2)
-            print(round(y1_axis))
-            motor.value = round(y1_axis)
-            
-            
+        x1_axis = joystick.get_axis(0)
+        y1_axis = joystick.get_axis(1)
+        x2_axis = joystick.get_axis(3)
+        y2_axis = joystick.get_axis(4)
+        r_axis = joystick.get_axis(2) # for r and l axis, -1 is all the way up, 1 is all the way down
+        l_axis = joystick.get_axis(5)
+        
+        b_x = joystick.get_button(0)
+        b_o = joystick.get_button(1)
+        b_sq = joystick.get_button(3)
+        b_tr = joystick.get_button(2)
+        print(round(y1_axis))
+        left_motor.value = round(y1_axis)
+        
+        
+        
             
 ################################################################################################
-
-
-
-
-
-
-
-
-
-
-
-
-
         # Go ahead and update the screen with what we've drawn.
-        pygame.display.flip()
+        #pygame.display.flip()
 
         # Limit to 30 frames per second.
         clock.tick(30)
