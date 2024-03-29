@@ -42,8 +42,8 @@ def round(input):
 def mix(x,y):
     # +y is forward, -y is backward, +x is left, -x is right... change if needed
     mag = math.sqrt(x**2 + y**2)
-    left = y - x
-    right = y + x
+    left = -y - x
+    right = -y + x
     return (round(right), round(left))
     
     
