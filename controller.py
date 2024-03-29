@@ -110,6 +110,7 @@ def main():
         left_motor.value = motor_vals[1]
         print(motor_vals[0])
         print(motor_vals[1])
+        print("\n")
         
         
             
