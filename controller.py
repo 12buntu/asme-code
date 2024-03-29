@@ -42,8 +42,9 @@ def round(input):
 def mix(x,y):
     # +y is forward, -y is backward, +x is left, -x is right... change if needed
     mag = math.sqrt(x**2 + y**2)
-    left = -y - x
-    right = -y + x
+    angle = math.atan2(y/x)
+    left = mag * math.sin(angle) + mag * math.cos(angle)
+    right = mag * math.sin(angle) - mag * math.cos(angle)
     return (round(right), round(left))
     
     
@@ -104,11 +105,11 @@ def main():
         b_o = joystick.get_button(1)
         b_sq = joystick.get_button(3)
         b_tr = joystick.get_button(2)
-        print(round(y1_axis))
         motor_vals = mix(x1_axis, y1_axis)
         right_motor.value = motor_vals[0]
         left_motor.value = motor_vals[1]
-        
+        print(motor_vals[0])
+        print(motor_vals[1])
         
         
             
