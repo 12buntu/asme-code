@@ -84,12 +84,12 @@ def main():
                 del joysticks[event.instance_id]
                 print(f"Joystick {event.instance_id} disconnected")
 
-        text_print.reset()
+        #text_print.reset()
 
         # Get count of joysticks.
         joystick_count = pygame.joystick.get_count()
 
-        text_print.tprint(screen, f"Number of joysticks: {joystick_count}")
+        #text_print.tprint(screen, f"Number of joysticks: {joystick_count}")
         joystick = next(iter(joysticks.values()))
         #for joystick in joysticks.values():
 ################################### IMPORTANT STUFF ##################################################################            
