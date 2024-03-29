@@ -42,7 +42,7 @@ def round(input):
 def mix(x,y):
     # +y is forward, -y is backward, +x is left, -x is right... change if needed
     mag = math.sqrt(x**2 + y**2)
-    angle = math.atan2(y/x)
+    angle = math.atan2(y,x)
     left = mag * math.sin(angle) + mag * math.cos(angle)
     right = mag * math.sin(angle) - mag * math.cos(angle)
     return (round(right), round(left))
