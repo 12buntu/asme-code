@@ -90,24 +90,24 @@ def main():
         joystick_count = pygame.joystick.get_count()
 
         #text_print.tprint(screen, f"Number of joysticks: {joystick_count}")
-        # joystick = next(iter(joysticks.values()))
-        for joystick in joysticks.values():
+        joystick = next(iter(joysticks.values()))
+        #for joystick in joysticks.values():
 ################################### IMPORTANT STUFF ##################################################################            
-            x1_axis = joystick.get_axis(0)
-            y1_axis = joystick.get_axis(1)
-            x2_axis = joystick.get_axis(3)
-            y2_axis = joystick.get_axis(4)
-            r_axis = joystick.get_axis(2) # for r and l axis, -1 is all the way up, 1 is all the way down
-            l_axis = joystick.get_axis(5)
-            
-            b_x = joystick.get_button(0)
-            b_o = joystick.get_button(1)
-            b_sq = joystick.get_button(3)
-            b_tr = joystick.get_button(2)
-            print(round(y1_axis))
-            motor_vals = mix(x1_axis, y1_axis)
-            right_motor.value = motor_vals[0]
-            left_motor.value = motor_vals[1]
+        x1_axis = joystick.get_axis(0)
+        y1_axis = joystick.get_axis(1)
+        x2_axis = joystick.get_axis(3)
+        y2_axis = joystick.get_axis(4)
+        r_axis = joystick.get_axis(2) # for r and l axis, -1 is all the way up, 1 is all the way down
+        l_axis = joystick.get_axis(5)
+        
+        b_x = joystick.get_button(0)
+        b_o = joystick.get_button(1)
+        b_sq = joystick.get_button(3)
+        b_tr = joystick.get_button(2)
+        print(round(y1_axis))
+        motor_vals = mix(x1_axis, y1_axis)
+        right_motor.value = motor_vals[0]
+        left_motor.value = motor_vals[1]
         
         
         
