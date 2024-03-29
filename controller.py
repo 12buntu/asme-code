@@ -107,8 +107,8 @@ def main():
             #motor_vals = mix(x1_axis, y1_axis)
             # 
             motor_vals = (x1_axis, x2_axis)
-            right_motor.value = motor_vals[0]
-            left_motor.value = motor_vals[1]
+            right_motor.value = round(motor_vals[0])
+            left_motor.value = round(motor_vals[1])
             print(motor_vals[0])
             print(motor_vals[1])
             print("\n")
