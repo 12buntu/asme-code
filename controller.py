@@ -9,7 +9,7 @@ pygame.init()
 
 
 left_motor = Servo(21, frame_width=.01-.00000002)
-right_motor = Servo(22, frame_width=.01-.00000002)
+right_motor = Servo(20, frame_width=.01-.00000002)
 
 
 
