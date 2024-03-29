@@ -44,7 +44,7 @@ def mix(x,y):
     mag = math.sqrt(x**2 + y**2)
     left = y - x
     right = y + x
-    return tuple(round(right), round(left))
+    return (round(right), round(left))
     
     
     
