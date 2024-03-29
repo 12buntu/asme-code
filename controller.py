@@ -105,9 +105,10 @@ def main():
         b_o = joystick.get_button(1)
         b_sq = joystick.get_button(3)
         b_tr = joystick.get_button(2)
-        motor_vals = mix(x1_axis, y1_axis)
-        right_motor.value = motor_vals[0]
-        left_motor.value = motor_vals[1]
+        #motor_vals = mix(x1_axis, y1_axis)
+        # right_motor.value = motor_vals[0]
+        # left_motor.value = motor_vals[1]
+        motor_vals = (x1_axis, x2_axis)
         print(motor_vals[0])
         print(motor_vals[1])
         print("\n")
