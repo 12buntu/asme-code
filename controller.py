@@ -106,8 +106,8 @@ def main():
         b_tr = joystick.get_button(2)
         print(round(y1_axis))
         motor_vals = mix(x1_axis, y1_axis)
-        #right_motor.value = motor_vals[0]
-        #left_motor.value = motor_vals[1]
+        right_motor.value = motor_vals[0]
+        left_motor.value = motor_vals[1]
         
         
         
