@@ -90,7 +90,7 @@ def main():
         joystick_count = pygame.joystick.get_count()
 
         #text_print.tprint(screen, f"Number of joysticks: {joystick_count}")
-        joystick = next(iter(joysticks.values()))
+        # joystick = next(iter(joysticks.values()))
         for joystick in joysticks.values():
 ################################### IMPORTANT STUFF ##################################################################            
             x1_axis = joystick.get_axis(0)
