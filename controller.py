@@ -65,6 +65,9 @@ def main():
     # pygame.JOYDEVICEADDED event for every joystick connected
     # at the start of the program.
     joysticks = {}
+    joystick_count = pygame.joystick.get_count()
+
+    joystick = next(iter(joysticks.values()))
 
     done = False
     while not done:
@@ -88,10 +91,8 @@ def main():
         #text_print.reset()
 
         # Get count of joysticks.
-        joystick_count = pygame.joystick.get_count()
 
         #text_print.tprint(screen, f"Number of joysticks: {joystick_count}")
-        joystick = next(iter(joysticks.values()))
         #for joystick in joysticks.values():
 ################################### IMPORTANT STUFF ##################################################################            
         x1_axis = joystick.get_axis(0)
