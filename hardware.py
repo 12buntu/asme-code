@@ -1,5 +1,11 @@
 import math
-from gpiozero import Servo, PWMOutputDevice
+from gpiozero import Servo, Device
+
+from gpiozero.pins.pigpio import PiGPIOFactory
+Device.pin_factory = PiGPIOFactory()
+
+# from gpiozero.pins.mock import MockFactory
+# Device.pin_factory = MockFactory()
 
 class Motor:
     def __init__(self, pin, multiplier=1):
