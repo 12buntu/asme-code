@@ -13,7 +13,7 @@ def main():
         gamepad.process_events()
         gps = gamepad.get_controller(0)
         
-        chassis.drive(-gps["y1_axis"],gps["x1_axis"])
+        chassis.drive(-gps["y1_axis"], gps["x1_axis"])
         
         
 if __name__ == "__main__":

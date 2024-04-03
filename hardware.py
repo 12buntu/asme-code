@@ -14,6 +14,17 @@ class Motor:
     def send_power(self, power):
         self.servo_control.value = power * self.multiplier
         
+class Solenoid:
+    def __init__(self, pin):
+        self.solenoid = None # find gpiozero solenoid pin controller
+        self.state = 0
+    def toggle(self):
+        if self.state == 0:
+            self.state = 1
+        else:
+            self.state = 0
+        self.solenoid.set_state(self.state) # this isn't a real function, you should probably fix that when you find out
+        
 class Chassis:
     def __init__(self, left, right):
         self.left_motor = Motor(left)
