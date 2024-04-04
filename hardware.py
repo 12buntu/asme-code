@@ -54,8 +54,8 @@ class Chassis:
                 
         
         return {
-            'left' : math.round(left,1), 
-            'right' : math.round(right,1)
+            'left' : round(left,1), 
+            'right' : round(right,1)
             }
     def drive(self, drive, rotate):
         motor_vals = self.mix(drive,rotate)
