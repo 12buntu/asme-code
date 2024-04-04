@@ -33,7 +33,8 @@ class Chassis:
         # variables to determine the quadrants
         maximum = max(abs(drive), abs(rotate))
         total, difference = drive + rotate, drive - rotate
-        left, right = 0
+        left = 0
+        right = 0
 
         # set speed according to the quadrant that the values are in
         if drive >= 0:
