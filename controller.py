@@ -33,8 +33,8 @@ class Controller:
         return {
             "x1_axis" : self.joystick.get_axis(0),
             "y1_axis" : self.joystick.get_axis(1),
-            "x2_axis" : self.joystick.get_axis(3),
-            "y2_axis" : self.joystick.get_axis(4),
+            "x2_axis" : self.joystick.get_axis(2),
+            "y2_axis" : self.joystick.get_axis(3),
             "r_axis " : self.joystick.get_axis(2), # for r and l axis, -1 is all the way up, 1 is all the way down
             "l_axis " : self.joystick.get_axis(5),
             
