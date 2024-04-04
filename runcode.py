@@ -6,7 +6,7 @@ from hardware import Chassis
 pygame.init()
 
 def main():
-    gamepad = Controller()
+    gamepad = Controller(0)
     chassis = Chassis()
     done = False
     while not done:
