@@ -11,7 +11,7 @@ def main():
     done = False
     while not done:
         gamepad.process_events()
-        gps = gamepad.get_controller(0)
+        gps = gamepad.get_controller()
         
         chassis.drive(-gps["y1_axis"], gps["x1_axis"])
         
