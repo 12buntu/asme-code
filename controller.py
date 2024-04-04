@@ -10,7 +10,7 @@ class Controller:
     screen = pygame.display.set_mode((500,700))
     pygame.display.set_caption("SDC!")
     def __init__(self, controller_index):
-            joystick = pygame.joystick.Joystick(controller_index)
+            self.joystick = pygame.joystick.Joystick(controller_index)
 
         
     def process_events(self):
