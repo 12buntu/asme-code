@@ -14,7 +14,7 @@ def main():
         gps = gamepad.get_controller()
         
         chassis.drive(-gps["y1_axis"], gps["x1_axis"])
-        print(-gps["y1_axis"], gps["x1_axis"])
+        print(round(-gps["y1_axis"],1), round(gps["x1_axis"],1))
         
         
 if __name__ == "__main__":
