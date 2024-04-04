@@ -7,7 +7,7 @@ pygame.init()
 
 def main():
     gamepad = Controller(0)
-    chassis = Chassis()
+    chassis = Chassis(19,21)
     done = False
     while not done:
         gamepad.process_events()
