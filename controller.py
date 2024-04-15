@@ -13,7 +13,7 @@ class Controller:
         is_controller = False
         while not is_controller:
             try: pygame.joystick.Joystick(controller_index)
-            except NameError: is_controller = False
+            except: is_controller = False
             else:
                 is_controller = True
                 self.joystick = pygame.joystick.Joystick(controller_index)
