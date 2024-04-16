@@ -44,5 +44,8 @@ class Controller:
             "b_o"  :  self.joystick.get_button(1),
             "b_sq" :  self.joystick.get_button(3),
             "b_tr" :  self.joystick.get_button(2),
+            "b_share" : self.joystick.get_button(8),
+            "b_opt" : self.joystick.get_button(9),
+            
         }
         

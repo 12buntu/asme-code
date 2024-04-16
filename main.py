@@ -30,7 +30,7 @@ def main():
         
         chassis.drive(gps["y1_axis"], gps["x1_axis"])
         print(round(gps["y1_axis"],1), -round(gps["x1_axis"],1))
-        if gps["b_x"]: 
+        if gps["b_opt"]: 
             Popen('git pull', shell=True)
             surface.fill(55,44,34)
             sleep(2.5)
