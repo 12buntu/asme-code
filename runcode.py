@@ -19,7 +19,6 @@ def main():
             sleep(.5)
         else:
             no_controller = False
-    surface.fill((0,55,255))
     print("controller exists!")
     gamepad = Controller(0) 
     chassis = Chassis(20,21)
@@ -32,6 +31,7 @@ def main():
         print(round(gps["y1_axis"],1), -round(gps["x1_axis"],1))
         if gps["b_x"]: 
             Popen('git pull', shell=True)
+            surface.fill(55,44,34)
             sleep(2.5)
             execl(sys.executable, sys.executable, *sys.argv)
         
