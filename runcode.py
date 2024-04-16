@@ -8,8 +8,7 @@ from controller import Controller
 from hardware import Chassis
 
 pygame.init()
-Popen('sudo pigpiod', shell=True)
-sleep (2.5)
+surface = pygame.display.set_mode((400, 300))
 
 def main():
     no_controller = True
@@ -20,7 +19,7 @@ def main():
             sleep(.5)
         else:
             no_controller = False
-
+    surface.fill((55,42,86))
     print("controller exists!")
     gamepad = Controller(0) 
     chassis = Chassis(20,21)
