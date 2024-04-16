@@ -19,7 +19,7 @@ def main():
             sleep(.5)
         else:
             no_controller = False
-    surface.fill((55,42,86))
+    surface.fill((0,55,255))
     print("controller exists!")
     gamepad = Controller(0) 
     chassis = Chassis(20,21)
