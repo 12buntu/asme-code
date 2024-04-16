@@ -12,8 +12,17 @@ Popen('sudo pigpiod', shell=True)
 sleep (2.5)
 
 def main():
+    no_controller = True
+    while no_controller:
+        try:
+            Controller(0)
+        except:
+            sleep(.5)
+        else:
+            no_controller = False
 
-    gamepad = Controller(0)
+    print("controller exists!")
+    gamepad = Controller(0) 
     chassis = Chassis(20,21)
     done = False
     while not done:

@@ -10,13 +10,7 @@ class Controller:
     screen = pygame.display.set_mode((500,700))
     pygame.display.set_caption("SDC!")
     def __init__(self, controller_index):
-        is_controller = False
-        while not is_controller:
-            try: pygame.joystick.Joystick(controller_index)
-            except: is_controller = False
-            else:
-                is_controller = True
-                self.joystick = pygame.joystick.Joystick(controller_index)
+        self.joystick = pygame.joystick.Joystick(controller_index)
             
         
 
