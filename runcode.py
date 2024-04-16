@@ -17,6 +17,7 @@ def main():
             Controller(0)
         except:
             sleep(.5)
+            pygame.display.set_mode((300,400))
         else:
             no_controller = False
     print("controller exists!")
