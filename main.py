@@ -5,7 +5,8 @@ from time import sleep
 from os import execl
 import sys
 from controller import Controller
-from hardware import Chassis
+from hardware import Chassis, Motor
+
 
 pygame.init()
 surface = pygame.display.set_mode((400, 300))
@@ -23,12 +24,14 @@ def main():
     print("controller exists!")
     gamepad = Controller(0) 
     chassis = Chassis(20,21)
+    flywheel = Motor(16) #one above 20
     done = False
     while not done:
         gamepad.process_events()
         gps = gamepad.get_controller()
-        
+        flywheel.send_power((gps["r_axis"] + 1 / 2))
         chassis.drive(gps["y1_axis"], gps["x1_axis"])
+        
         print(round(gps["y1_axis"],1), -round(gps["x1_axis"],1))
         if gps["b_opt"]: 
             Popen('git pull', shell=True)
