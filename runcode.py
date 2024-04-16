@@ -8,8 +8,11 @@ from controller import Controller
 from hardware import Chassis
 
 pygame.init()
+Popen('sudo pigpiod', shell=True)
+sleep (2.5)
 
 def main():
+
     gamepad = Controller(0)
     chassis = Chassis(20,21)
     done = False
