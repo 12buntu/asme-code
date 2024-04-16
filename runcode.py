@@ -34,7 +34,8 @@ def main():
             Popen('git pull', shell=True)
             surface.fill(55,44,34)
             sleep(2.5)
-            execl(sys.executable, sys.executable, *sys.argv)
+            Popen('python3 /home/blackweldera/asme-code/runcode.py')
+            sys.kill()
         
 if __name__ == "__main__":
     main()
