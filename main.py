@@ -24,7 +24,7 @@ def main():
     print("controller exists!")
     gamepad = Controller(0) 
     chassis = Chassis(20,21)
-    flywheel = Motor(16) #one above 20
+    flywheel = Motor(16,1,.02) #one above 20
     bonk = Solenoid(12) #2 above 16
     done = False
     while not done:
@@ -36,8 +36,8 @@ def main():
         chassis.drive(gps["y1_axis"], gps["x1_axis"])
         if gps["b_opt"]: 
             Popen('git pull', shell=True)
-            surface.fill(55,44,34)
             sleep(2.5)
+            print("restart!")
             execl(sys.executable, sys.executable, *sys.argv)
         if gps["b_x"]: bonk.toggle()
         
