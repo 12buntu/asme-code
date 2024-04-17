@@ -24,7 +24,7 @@ def main():
     print("controller exists!")
     gamepad = Controller(0) 
     chassis = Chassis(20,21)
-    flywheel = Motor(16,1,.05) #one above 20
+    flywheel = Motor(16,1,.005) #one above 20
     bonk = Solenoid(12) #2 above 16
     done = False
     while not done:
