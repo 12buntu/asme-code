@@ -8,17 +8,17 @@ Device.pin_factory = PiGPIOFactory()
 # Device.pin_factory = MockFactory()
 
 class Motor:
-    def __init__(self, pin, multiplier=1):
-        self.servo_control = Servo(pin, frame_width = .01)
+    def __init__(self, pin, multiplier=1, width=.01):
+        self.servo_control = Servo(pin, frame_width = width)
         self.multiplier = multiplier
     def send_power(self, power):
         self.servo_control.value = power * self.multiplier
         
 class Solenoid:
     def __init__(self, pin):
-        self.solenoid = Motor(pin,1) # find gpiozero solenoid pin controller
+        self.solenoid = Motor(pin,1,.01)
         self.state = -1
-    def toggle(self):
+    def toggle(self):  
         if self.state == -1:
             self.state = 1
         else:
