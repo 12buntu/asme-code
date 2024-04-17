@@ -24,7 +24,7 @@ def main():
     print("controller exists!")
     gamepad = Controller(0) 
     chassis = Chassis(20,21)
-    flywheel = Motor(16,1,.005) #one above 20
+    flywheel = Motor(16,1,.01) #one above 20
     bonk = Solenoid(12) #2 above 16
     done = False
     while not done:
@@ -32,7 +32,7 @@ def main():
         gps = gamepad.get_controller()
         ###
         flywheel.send_power((round((gps["r_axis"]) + 1) / 2))
-        print((gps["r_axis"]))
+        print(flywheel.servo_control.pulse_width)
         chassis.drive(gps["y1_axis"], gps["x1_axis"])
         if gps["b_opt"]: 
             Popen('git pull', shell=True)
