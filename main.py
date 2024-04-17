@@ -31,7 +31,7 @@ def main():
         gamepad.process_events()
         gps = gamepad.get_controller()
         ###
-        #flywheel.send_power((gps["r_axis"] + 1 / 2))
+        flywheel.send_power(round((gps["r_axis"]) + 1 / 2))
         print((gps["r_axis"]))
         chassis.drive(gps["y1_axis"], gps["x1_axis"])
         if gps["b_opt"]: 
