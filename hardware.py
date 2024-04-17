@@ -8,7 +8,7 @@ Device.pin_factory = PiGPIOFactory()
 # Device.pin_factory = MockFactory()
 
 class Motor:
-    def __init__(self, pin, multiplier=1, width=.01, min = .01, max=.02):
+    def __init__(self, pin, multiplier=1, width=.01, min = .001, max=.002):
         self.servo_control = Servo(pin, frame_width = width, min_pulse_width=min, max_pulse_width=max)
         self.multiplier = multiplier
     def send_power(self, power):
