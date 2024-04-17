@@ -13,9 +13,12 @@ class Motor:
         self.multiplier = multiplier
     def send_power(self, power):
         self.servo_control.value = power * self.multiplier
-#class genMotor:
-    # def __init__(self, pin, multiplier=1, width=.01, frequency=100):
-    #     self.pwm_dev = PWMOutputDevice(pin,True,0,frequency)
+class GenMotor:
+    def __init__(self, pin, multiplier=1, width=.01, frequency=100):
+        self.pwm_dev = PWMOutputDevice(pin,True,0,frequency)
+        self.multiplier = multiplier
+    def send_power(self,power):
+        self.pwm_dev.value = power * self.multiplier
         
 class Solenoid:
     def __init__(self, pin):
