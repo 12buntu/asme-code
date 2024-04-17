@@ -1,5 +1,5 @@
 import math
-from gpiozero import Servo, Device, PWMOutputDevice
+from gpiozero import Servo, Device, PWMOutputDevice, Motor as gpiozeroMotor
 
 from gpiozero.pins.pigpio import PiGPIOFactory
 Device.pin_factory = PiGPIOFactory()
@@ -15,10 +15,10 @@ class Motor:
         self.servo_control.value = power * self.multiplier
 class GenMotor:
     def __init__(self, pin, multiplier=1, width=.01, frequency=100):
-        self.pwm_dev = PWMOutputDevice(pin,frequency=frequency)
-        self.multiplier = multiplier
+        self.motor = gpiozeroMotor(16,19,pwm=False)
     def send_power(self,power):
-        self.pwm_dev.value = power * self.multiplier
+        if power > 0: self.motor.forward()
+        if power < 0: self.motor.backward()
         
 class Solenoid:
     def __init__(self, pin):
