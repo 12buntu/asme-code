@@ -19,7 +19,7 @@ class GenMotor:
     def send_power(self,power):
         if power > 0: self.motor.forward()
         if power < 0: self.motor.backward()
-        if power = 0: self.motor.stop()
+        if power == 0: self.motor.stop()
         
 class Solenoid:
     def __init__(self, pin):
