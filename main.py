@@ -32,7 +32,7 @@ def main():
         gps = gamepad.get_controller()
         ###
         flywheel.send_power((round((gps["r_axis"]) + 1) / 2))
-        print(flywheel.pwm_dev.pulse_width)
+        print(flywheel.pwm_dev.value)
         chassis.drive(gps["y1_axis"], gps["x1_axis"])
         if gps["b_opt"]: 
             Popen('git pull', shell=True)
