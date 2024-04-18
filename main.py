@@ -26,7 +26,7 @@ def main():
     chassis = Chassis(20,21)
     flywheel = GenMotor(16,19) #one above 20
     linact = GenMotor(6,12)
-    bonk = Solenoid(12) #2 above 16
+    bonk = Solenoid(13) 
     done = False
     while not done:
         gamepad.process_events()
