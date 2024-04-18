@@ -31,6 +31,9 @@ class Solenoid:
         else:
             self.state = -1
         self.solenoid.send_power(self.state)
+
+        
+
         
         
 class Chassis:
