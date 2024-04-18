@@ -42,6 +42,8 @@ def main():
         if gps["b_x"]: bonk.toggle()
         if gps["bump_l"]: linact.send_power(1)
         if gps["bump_r"]: linact.send_power(-1)
+        if not (gps["bump_l"] or gps["bump_r"]): linact.send_power(0)
+    
         
 if __name__ == "__main__":
     main()
