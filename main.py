@@ -46,7 +46,11 @@ def main():
 
         # Arm Control Scheme
         spinny.send_power(gps["x2_axis"])
+<<<<<<< HEAD
         print(spinny.servo_control.value)
+=======
+        print(spinny.value)
+>>>>>>> 0f6385d977936099b00107a6c7c30d07a12d5a41
 
         linact.send_power(gps["y2_axis"])
 
