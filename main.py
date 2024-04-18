@@ -26,7 +26,7 @@ def main():
     chassis = Chassis(20,21)
     flywheel = GenMotor(16,19) #one above 20
     linact = GenMotor(6,12)
-    spinny = Motor(5)
+    spinny = Motor(5,width=.02)
     bonk = Solenoid(13) 
     done = False
     while not done:
