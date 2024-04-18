@@ -32,6 +32,7 @@ class Solenoid:
             self.state = -1
         self.solenoid.send_power(self.state)
         
+        
 class Chassis:
     def __init__(self, left, right):
         self.left_motor = Motor(left)

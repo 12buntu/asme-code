@@ -26,6 +26,7 @@ def main():
     chassis = Chassis(20,21)
     flywheel = GenMotor(16,19) #one above 20
     linact = GenMotor(6,12)
+    spinny = Motor(1)
     bonk = Solenoid(13) 
     done = False
     while not done:
@@ -34,6 +35,8 @@ def main():
         ###
         flywheel.send_power((round((gps["l_axis"]) + 1) / 2)-(round((gps["r_axis"]) + 1) / 2))
         chassis.drive(gps["y1_axis"], gps["x1_axis"])
+        spinny.send_power(gps["x2_axis"])
+        linact.send_power(gps["y1_axis"])
         if gps["b_opt"]: 
             Popen('git pull', shell=True)
             sleep(2.5)
@@ -42,7 +45,7 @@ def main():
         if gps["b_x"]: bonk.toggle()
         if gps["bump_l"]: linact.send_power(1)
         if gps["bump_r"]: linact.send_power(-1)
-        if not (gps["bump_l"] or gps["bump_r"]): linact.send_power(0)
+       # if not (gps["bump_l"] or gps["bump_r"]): linact.send_power(0)
     
         
 if __name__ == "__main__":
