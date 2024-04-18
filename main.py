@@ -25,6 +25,7 @@ def main():
     gamepad = Controller(0) 
     chassis = Chassis(20,21)
     flywheel = GenMotor(16,19) #one above 20
+    linact = GenMotor(6,12)
     bonk = Solenoid(12) #2 above 16
     done = False
     while not done:
@@ -39,6 +40,8 @@ def main():
             print("restart!")
             execl(sys.executable, sys.executable, *sys.argv)
         if gps["b_x"]: bonk.toggle()
+        if gps["bump_l"]: linact.send_power(1)
+        if gps["bump_r"]: linact.sendpower(-1)
         
 if __name__ == "__main__":
     main()
