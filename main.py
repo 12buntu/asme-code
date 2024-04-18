@@ -46,7 +46,6 @@ def main():
 
         # Arm Control Scheme
         spinny.send_power(gps["x2_axis"])
-        print(spinny.value())
         linact.send_power(gps["y2_axis"])
 
         # Ball Control Scheme
