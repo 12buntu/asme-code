@@ -41,7 +41,7 @@ def main():
             execl(sys.executable, sys.executable, *sys.argv)
         if gps["b_x"]: bonk.toggle()
         if gps["bump_l"]: linact.send_power(1)
-        if gps["bump_r"]: linact.sendpower(-1)
+        if gps["bump_r"]: linact.send_power(-1)
         
 if __name__ == "__main__":
     main()
