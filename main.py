@@ -45,7 +45,7 @@ def main():
         chassis.drive(gps["y1_axis"], gps["x1_axis"])
 
         # Arm Control Scheme
-        spinny.send_power(gps["x2_axis"])
+        spinny.servo_control.max()
         print(spinny.servo_control.value)
 
         linact.send_power(gps["y2_axis"])
