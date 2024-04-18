@@ -14,8 +14,8 @@ class Motor:
     def send_power(self, power):
         self.servo_control.value = power * self.multiplier
 class GenMotor:
-    def __init__(self, pin, multiplier=1, width=.01, frequency=100):
-        self.motor = gpiozeroMotor(16,19,pwm=False)
+    def __init__(self, pin1, pin2):
+        self.motor = gpiozeroMotor(forward=pin1,backward=pin2,pwm=False)
     def send_power(self,power):
         if power > 0: self.motor.forward()
         if power < 0: self.motor.backward()
