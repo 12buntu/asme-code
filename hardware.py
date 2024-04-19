@@ -26,12 +26,7 @@ class Solenoid:
         self.solenoid = DigitalOutputDevice(pin)
         self.state = 0
     def toggle(self):  
-        if self.state == 0:
-            self.state = 1
-            self.solenoid.on()
-        else:
-            self.state = 0
-            self.solenoid.off()
+        self.solenoid.blink(on_time=1, n=1)
         
         
 class Chassis:
