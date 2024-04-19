@@ -29,7 +29,7 @@ def main():
     chassis = Chassis(20,21)                            # Main Drive Motors
     flywheel = GenMotor(16,19)                          # Flywheel Motors #one above 20 
     linact = GenMotor(6,12)                             # Linear Actuator to Raise/Lower Arm
-    spinny = Motor(4, min=.5/1000, max=2.5/1000)        # 360-Continuous Servo used to rotate arm
+    spinny = Motor(pin=4, min=.5/1000, max=2.5/1000,width=20/1000, multiplier=1)        # 360-Continuous Servo used to rotate arm
     bonk = Solenoid(8)                                 # Solenoid used to push ball into flywheel
     n20s = Motor(22)                                    # N-20 Motors used to load ball into flywheel
     
