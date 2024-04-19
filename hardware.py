@@ -1,5 +1,5 @@
 import math
-from gpiozero import Servo, Device, PWMOutputDevice, Motor as gpiozeroMotor
+from gpiozero import Servo, Device, PWMOutputDevice, Motor as gpiozeroMotor, DigitalOutputDevice
 
 from gpiozero.pins.pigpio import PiGPIOFactory
 Device.pin_factory = PiGPIOFactory()
@@ -23,14 +23,15 @@ class GenMotor:
         
 class Solenoid:
     def __init__(self, pin):
-        self.solenoid = Motor(pin,1,.01)
+        self.solenoid = DigitalOutputDevice(pin)
         self.state = 0
     def toggle(self):  
         if self.state == 0:
             self.state = 1
+            self.solenoid.on()
         else:
             self.state = 0
-        self.solenoid.send_power(self.state)
+            self.solenoid.off()
         
         
 class Chassis:
