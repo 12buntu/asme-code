@@ -31,7 +31,7 @@ def main():
     linact = GenMotor(6,12)                             # Linear Actuator to Raise/Lower Arm
     spinny = Motor(pin=4, min=.5/1000, max=2.5/1000,width=20/1000, multiplier=1)        # 360-Continuous Servo used to rotate arm
     bonk = Solenoid(13)                                 # Solenoid used to push ball into flywheel
-    n20_1 = GenMotor(22)                                    # N-20 Motors used to load ball into flywheel
+    n20_1 = Motor(22)                                # N-20 Motors used to load ball into flywheel
     n20_2 = Motor(23)
     
     done = False
