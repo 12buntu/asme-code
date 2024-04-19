@@ -24,12 +24,13 @@ class GenMotor:
 class Solenoid:
     def __init__(self, pin):
         self.solenoid = Motor(pin,1,.01)
-        self.state = -1
-    def push(self):
-        self.solenoid.send_power(1)
-
-        
-
+        self.state = 0
+    def toggle(self):  
+        if self.state == 0:
+            self.state = 1
+        else:
+            self.state = 0
+        self.solenoid.send_power(self.state)
         
         
 class Chassis:

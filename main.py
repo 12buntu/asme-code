@@ -52,7 +52,7 @@ def main():
         # Ball Control Scheme
         n20s.send_power(gps["bump_l"] - gps["bump_r"])
         flywheel.send_power((round((gps["l_axis"]) + 1) / 2)-(round((gps["r_axis"]) + 1) / 2))
-        if gps["b_x"]: bonk.push()
+        if gps["b_x"]: bonk.toggle()
         
         ### Other control layout lines --> Not currently in use
 
