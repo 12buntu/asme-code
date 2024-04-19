@@ -31,7 +31,8 @@ def main():
     linact = GenMotor(6,12)                             # Linear Actuator to Raise/Lower Arm
     spinny = Motor(pin=4, min=.5/1000, max=2.5/1000,width=20/1000, multiplier=1)        # 360-Continuous Servo used to rotate arm
     bonk = Solenoid(13)                                 # Solenoid used to push ball into flywheel
-    n20s = GenMotor(17,18)                                    # N-20 Motors used to load ball into flywheel
+    n20_1 = GenMotor(22)                                    # N-20 Motors used to load ball into flywheel
+    n20_2 = Motor(23)
     
     done = False
     while not done:
@@ -50,7 +51,8 @@ def main():
         linact.send_power(gps["y2_axis"])
 
         # Ball Control Scheme
-        n20s.send_power(gps["bump_l"] - gps["bump_r"])
+        n20_1.send_power(gps["bump_l"] - gps["bump_r"])
+        n20_2.send_power(gps["bump_l"] - gps["bump_r"])
         flywheel.send_power((round((gps["l_axis"]) + 1) / 2)-(round((gps["r_axis"]) + 1) / 2))
         if gps["b_x"]: bonk.toggle()
         
