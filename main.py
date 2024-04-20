@@ -27,8 +27,8 @@ def main():
     # Define Pi inputs/outputs according to https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2023/03/Raspberry-Pi-Pinout-Random-Nerd-Tutorials.png?resize=1024%2C576&quality=100&strip=all&ssl=1
     gamepad = Controller(0) 
     chassis = Chassis(20,21)                            # Main Drive Motors
-    flywheel = Motor(6)                          # Flywheel Motors #one above 20 
-    linact = Motor(12)                             # Linear Actuator to Raise/Lower Arm
+    flywheel = GenMotor(16,19)                          # Flywheel Motors #one above 20 
+    linact = GenMotor(6,12)                             # Linear Actuator to Raise/Lower Arm
     spinny = Motor(pin=4, min=.5/1000, max=2.5/1000,width=20/1000, multiplier=1)        # 360-Continuous Servo used to rotate arm
     bonk = Solenoid(13)                                 # Solenoid used to push ball into flywheel
     n20_1 = Motor(22)                                # N-20 Motors used to load ball into flywheel
