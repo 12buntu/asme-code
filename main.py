@@ -26,6 +26,7 @@ def main():
 
     # Define Pi inputs/outputs according to https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2023/03/Raspberry-Pi-Pinout-Random-Nerd-Tutorials.png?resize=1024%2C576&quality=100&strip=all&ssl=1
     gamepad = Controller(0) 
+    
     chassis = Chassis(20,21)                            # Main Drive Motors
     flywheel = GenMotor(16,19)                          # Flywheel Motors #one above 20 
     linact = GenMotor(6,12)                             # Linear Actuator to Raise/Lower Arm
@@ -47,7 +48,7 @@ def main():
 
         # Arm Control Scheme
         spinny.send_power(-gps["x_hat"])
-        linact.send_power(-gps["y_hat"])
+        linact.send_power(antidrift(gps["x2_axis"]))
 
         # Ball Control Scheme
         n20_1.send_power(gps["bump_l"] - gps["bump_r"])
