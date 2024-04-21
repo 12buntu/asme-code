@@ -48,8 +48,8 @@ class Controller:
             "b_opt" : self.joystick.get_button(9),
             "bump_r" : self.joystick.get_button(5),
             "bump_l" : self.joystick.get_button(4),
-            "x_hat" : self.joystick.get_hat((0,0)),
-            "y_hat" : self.joystick.get_hat((0,1)),
+            "x_hat" : self.joystick.get_hat(0),
+            "y_hat" : self.joystick.get_hat(1),
 
         }
         
