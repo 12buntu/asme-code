@@ -1,5 +1,4 @@
 #!/home/blackweldera/venv/bin/python3
-import pygame
 from subprocess import Popen
 from time import sleep
 from os import execl
@@ -7,25 +6,9 @@ import sys
 from controller import Controller
 from hardware import Chassis, Motor, Solenoid, GenMotor
 
-
-pygame.init()
-surface = pygame.display.set_mode((400, 300))
-
 def main():
-    # Cycle program until controller is connected
-    no_controller = True
-    while no_controller:
-        try:
-            Controller(0)
-        except:
-            sleep(.5)
-            pygame.display.set_mode((300,400))
-        else:
-            no_controller = False
-    print("controller exists!")
-
     # Define Pi inputs/outputs according to https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2023/03/Raspberry-Pi-Pinout-Random-Nerd-Tutorials.png?resize=1024%2C576&quality=100&strip=all&ssl=1
-    gamepad = Controller(0) 
+    gamepad = Controller() 
     
     chassis = Chassis(20,21)                            # Main Drive Motors
     flywheel = GenMotor(16,19)                          # Flywheel Motors #one above 20 
@@ -38,21 +21,15 @@ def main():
     done = False
     while not done:
         # Process inputs of controllers
-        gamepad.process_events()
-        gps = gamepad.get_controller()
+        presses = gamepad.get_press()
+        joystick = gamepad.get_joystick()
         ###____________________________________________________________________________________###
         
-
         # Main Control Scheme
-        chassis.drive(gps["y1_axis"], gps["x1_axis"])
-
-        # Arm Control Scheme
-        if not gps["x_hat"]: spinny.send_power(-gps["x_hat"])
-        else: spinny.send_power(antidrift(-gps["x2_axis"]))
-        linact.send_power(-gps["y_hat"])
+        chassis.drive(joystick.lx,joystick.ly)
 
         # Ball Control Scheme
-        n20_1.send_power(gps["bump_l"] - gps["bump_r"])
+        n20_1.send_power(joystick.l1 - joystick.r1])
         n20_2.send_power(gps["bump_l"] - gps["bump_r"])
         flywheel.send_power((round((gps["l_axis"]) + 1) / 2)-(round((gps["r_axis"]) + 1) / 2))
         if gps["b_x"]: bonk.toggle()
