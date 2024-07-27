@@ -1,8 +1,3 @@
-#!/home/blackweldera/venv/bin/python3
-from subprocess import Popen
-from time import sleep
-from os import execl
-import sys
 from controller import Controller
 from hardware import Chassis, Motor, Solenoid, GenMotor
 
@@ -29,10 +24,10 @@ def main():
         chassis.drive(joystick.lx,joystick.ly)
 
         # Ball Control Scheme
-        n20_1.send_power(joystick.l1 - joystick.r1])
-        n20_2.send_power(gps["bump_l"] - gps["bump_r"])
-        flywheel.send_power((round((gps["l_axis"]) + 1) / 2)-(round((gps["r_axis"]) + 1) / 2))
-        if gps["b_x"]: bonk.toggle()
+        n20_1.send_power(joystick.l1 - joystick.r1)
+        # n20_2.send_power(gps["bump_l"] - gps["bump_r"])
+        # flywheel.send_power((round((gps["l_axis"]) + 1) / 2)-(round((gps["r_axis"]) + 1) / 2))
+        # if gps["b_x"]: bonk.toggle()
         
         ### Other control layout lines --> Not currently in use
 
@@ -41,11 +36,11 @@ def main():
         #if not (gps["bump_l"] or gps["bump_r"]): linact.send_power(0)
 
         # Update Code without keyboard
-        if gps["b_opt"]: 
-            Popen('git pull', shell=True)
-            sleep(2.5)
-            print("restart!")
-            execl(sys.executable, sys.executable, *sys.argv)
+        # if gps["b_opt"]: 
+        #     Popen('git pull', shell=True)
+        #     sleep(2.5)
+        #     print("restart!")
+        #     execl(sys.executable, sys.executable, *sys.argv)
         
 def antidrift(input, factor=.2):
     return factor * round(input/factor)        
